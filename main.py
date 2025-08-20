@@ -1,3 +1,4 @@
+import sys
 from stats import book_word_count, book_character_count
 
 def get_book_text(filepath):
@@ -15,7 +16,13 @@ def convert_and_sort_dictionary(dictionary):
   return unsorted_dictionary_list
 
 def main():
-  path = "books/frankenstein.txt"
+  if len(sys.argv) != 2:
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
+  
+  path = sys.argv[1]
+  
+  #path = "books/frankenstein.txt"
   contents = get_book_text(path)
   word_count = book_word_count(contents)
   
